@@ -90,6 +90,7 @@ pub async fn delete_user(db: Data<MongoRepo>, path: Path<String>) -> HttpRespons
         return HttpResponse::BadRequest().body("invalid ID");
     };
     let result = db.delete_user(&id).await;
+
     match result {
         Ok(res) => {
             if res.deleted_count == 1 {
