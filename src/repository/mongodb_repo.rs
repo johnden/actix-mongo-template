@@ -42,6 +42,7 @@ impl MongoRepo {
             name: new_user.name,
             location: new_user.location,
             title: new_user.title,
+            email: new_user.email,
         };
         let user = self
             .col

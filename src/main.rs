@@ -4,7 +4,14 @@ mod models;
 mod repository;
 
 use actix_web::{web::Data, App, HttpServer};
-use api::user_api::{create_user, delete_user, get_user, update_user, get_all_users};
+use api::user_api::{
+    create_user, 
+    delete_user, 
+    get_user, 
+    update_user, 
+    get_all_users,
+    index,
+};
 use repository::mongodb_repo::MongoRepo;
 
 
@@ -30,6 +37,7 @@ async fn main() -> std::io::Result<()> {
             .service(update_user)
             .service(delete_user)
             .service(get_all_users)
+            .service(index)
     })
     .bind(("127.0.0.1", 4000))?
     .run()
